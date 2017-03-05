@@ -1,57 +1,33 @@
 import QtQuick 2.5
-import QtQuick.Window 2.0
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.1
 
-Window {
-    id: window
-    visible: true
-    title: "hydron-qt"
-    minimumWidth: 640
-    minimumHeight: 480
+ApplicationWindow {
+	id: window
+	visible: true
+	title: "hydron-qt"
+	minimumWidth: 640
+	minimumHeight: 480
 
-    SplitView {
-        id: mainView
-        anchors.rightMargin: 0
-        anchors.bottomMargin: 0
-        anchors.leftMargin: 0
-        anchors.topMargin: 0
-        anchors.fill: parent
-        orientation: Qt.Horizontal
+	toolBar: ToolBar {
+		focus: true
 
-        ColumnLayout {
-            anchors.top: parent.top
-            anchors.left: parent.left
-            Layout.minimumWidth: 200
-            Layout.preferredWidth: parent.width * 0.3
-            Layout.maximumWidth: parent.width * 0.9
+		RowLayout {
+			anchors.fill: parent
 
-            SearchBar {
-                id: searchBar
-                anchors.top: parent.top
-                anchors.right: parent.right
-                anchors.left: parent.left
-            }
+			SearchBar {
+				focus: true
+				Layout.fillWidth: true
+			}
+		}
+	}
 
-            Item {
-                id: previewContainer
-                anchors.bottom: parent.bottom
-                anchors.right: parent.right
-                anchors.left: parent.left
-                Layout.fillHeight: true
+	ScrollView {
+		anchors.fill: parent
 
-                Text {
-                    text: "preview"
-                }
-            }
-        }
-
-        ScrollView {
-            Browser {
-                id: browser
-                Layout.fillWidth: true
-                Layout.minimumWidth: 200
-            }
-        }
-    }
+		Browser {
+			id: browser
+			anchors.fill: parent
+		}
+	}
 }
