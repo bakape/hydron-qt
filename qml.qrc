@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>util.js</file>
+        <file>SearchBar.qml</file>
+        <file>Browser.qml</file>
+    </qresource>
+</RCC>
