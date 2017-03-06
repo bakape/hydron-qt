@@ -12,7 +12,7 @@ TextField {
 		browser.loadThumbnails(text.split(" "))
 	}
 	Component.onCompleted: {
-		 forceActiveFocus()
+		forceActiveFocus()
 	}
 
 	Keys.onReleased: {

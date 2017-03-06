@@ -11,8 +11,6 @@ ApplicationWindow {
 	minimumHeight: 480
 
 	toolBar: ToolBar {
-		focus: true
-
 		RowLayout {
 			anchors.fill: parent
 
