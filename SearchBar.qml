@@ -11,6 +11,12 @@ TextField {
 
 	Keys.onReleased: {
 		suggestions.model.clear()
+		var mod = event.modifiers
+		if (mod & Qt.ControlModifier
+				|| mod & Qt.AltModifier
+				|| mod & Qt.MetaModifier) {
+			return
+		}
 		switch (event.key) {
 		case Qt.Key_Return:
 		case Qt.Key_Escape:
