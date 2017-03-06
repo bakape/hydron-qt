@@ -5,9 +5,15 @@ import QtQuick.Controls 1.4
 TextField {
 	Layout.fillWidth: true
 	placeholderText: "Search"
+	focus: true
+	activeFocusOnTab: true
 
-	onAccepted: browser.loadThumbnails(searchBar.text.split(" "))
-	Component.onCompleted: searchBar.forceActiveFocus()
+	onAccepted: {
+		browser.loadThumbnails(text.split(" "))
+	}
+	Component.onCompleted: {
+		 forceActiveFocus()
+	}
 
 	Keys.onReleased: {
 		suggestions.model.clear()
@@ -24,12 +30,12 @@ TextField {
 			return
 		}
 
-		var i = searchBar.text.lastIndexOf(" ")
-		if (i === searchBar.text.length - 1) {
+		var i = text.lastIndexOf(" ")
+		if (i === text.length - 1) {
 			return
 		}
 		var url = "http://localhost:8010/complete_tag/"
-				+ searchBar.text.slice(i + 1)
+				+ text.slice(i + 1)
 
 		var xhr = new XMLHttpRequest()
 		xhr.onreadystatechange = function () {

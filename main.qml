@@ -12,26 +12,24 @@ ApplicationWindow {
 
 	toolBar: ToolBar {
 		focus: true
-//		height: childrenRect.height
 
 		RowLayout {
 			anchors.fill: parent
 
 			SearchBar {
 				id: searchBar
-				focus: true
 				Layout.fillWidth: true
 			}
 		}
 	}
 
 	ScrollView {
+		id: browserContainer
 		anchors.fill: parent
 
 		Browser {
 			id: browser
 			anchors.fill: parent
-			focus: true
 		}
 	}
 
