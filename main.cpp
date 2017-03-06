@@ -9,9 +9,7 @@ int main(int argc, char *argv[])
     QProcess hydron;
     hydron.start("hydron", QStringList() << "serve");
 
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication app(argc, argv);
-
     QQmlApplicationEngine engine;
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
 
