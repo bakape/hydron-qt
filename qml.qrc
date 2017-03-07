@@ -4,5 +4,7 @@
         <file>SearchBar.qml</file>
         <file>Browser.qml</file>
         <file>main.qml</file>
+        <file>FileView.qml</file>
+        <file>Suggestions.qml</file>
     </qresource>
 </RCC>

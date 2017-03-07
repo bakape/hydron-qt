@@ -3,7 +3,6 @@ import QtQuick.Layouts 1.1
 import "util.js" as Util
 
 GridView {
-	snapMode: GridView.SnapToRow
 	cellHeight: 155
 	cellWidth: 155
 	model: ListModel {}
@@ -91,17 +90,34 @@ GridView {
 		case Qt.Key_End:
 			positionViewAtEnd()
 			break
+		case Qt.Key_Space:
+		case Qt.Key_Return:
+			open(currentIndex)
+			break
 		}
 	}
 
+	Drag.active: dragArea.drag.active
+	Drag.supportedActions: Qt.CopyAction
+
 	MouseArea {
+		id: dragArea
 		anchors.fill: parent
 		acceptedButtons: Qt.LeftButton
+		drag.target: parent
 
-		onClicked: {
+		onPressed: {
 			forceActiveFocus()
 			select(indexAt(mouse.x, mouse.y + contentY),
 				   !!(mouse.modifiers & Qt.ControlModifier))
+		}
+
+		onPressAndHold:	parent.grabToImage(function(result) {
+			parent.Drag.imageSource = result.url
+		})
+
+		onDoubleClicked: {
+			open(indexAt(mouse.x, mouse.y + contentY))
 		}
 	}
 
@@ -127,5 +143,11 @@ GridView {
 			}
 			positionViewAtIndex(i, GridView.Contain)
 		}
+	}
+
+	// Open a thumbnail for full screeen viewing
+	function open(i) {
+		suggestions.model.clear()
+		fileView.render(model.get(i))
 	}
 }

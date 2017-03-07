@@ -1,4 +1,5 @@
 import QtQuick 2.5
+import QtQml 2.2
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.1
 
@@ -9,6 +10,22 @@ ApplicationWindow {
 	title: "hydron-qt"
 	minimumWidth: 640
 	minimumHeight: 480
+
+	Item {
+		id: overlay
+		anchors.fill: parent
+		z: 100
+
+		Suggestions {
+			id: suggestions
+			anchors.fill: parent
+		}
+
+		FileView {
+			id: fileView
+			anchors.fill: parent
+		}
+	}
 
 	toolBar: ToolBar {
 		RowLayout {
@@ -31,31 +48,9 @@ ApplicationWindow {
 		}
 	}
 
-	Item {
-		id: overlay
-		anchors.fill: parent
-
-		MouseArea {
-			enabled: false
-		}
-
-		ScrollView {
-			ListView {
-				id: suggestions
-				anchors.leftMargin: 7
-				anchors.fill: parent
-				model: ListModel {}
-
-				delegate: Rectangle {
-					color: SystemPalette.base || "white"
-					width: childrenRect.width
-					height: childrenRect.height
-
-					Text {
-						text: tag
-					}
-				}
-			}
-		}
+	Shortcut {
+		sequence: StandardKey.Quit
+		context: Qt.ApplicationShortcut
+		onActivated: Qt.quit()
 	}
 }

@@ -9,6 +9,7 @@ TextField {
 	activeFocusOnTab: true
 
 	onAccepted: {
+		fileView.empty()
 		browser.loadThumbnails(text.split(" "))
 	}
 	Component.onCompleted: {
