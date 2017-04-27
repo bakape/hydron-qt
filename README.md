@@ -1,4 +1,1 @@
-# hydron-qt
-Qt GUI frontend for the hydron (https://github.com/bakape/hydron) media organizer
-
-Requires Qt >= 5.6
+This repo has been merged into https://github.com/bakape/hydron and will not be updated anymore.
